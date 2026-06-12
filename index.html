@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SheedBox — The Vault of Vision</title>
+  <meta name="description" content="SheedBox is the ultimate premium streaming vault, bringing you high-quality movies, series, and live TV channels from around the world.">
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Canvas for Interactive Particle Net -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Ambient Background Glows -->
+  <div class="bg-glow-container">
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+  </div>
+
+  <!-- ========== FLOATING HEADER ========== -->
+  <header>
+    <div class="logo-wrapper">
+      <img src="logo.png" alt="SheedBox Logo" class="logo-img">
+      <span class="brand-name" data-en="SheedBox" data-fa="شیدباکس">SheedBox</span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active" data-en="Home" data-fa="خانه">Home</a></li>
+        <li><a href="#philosophy" class="nav-link" data-en="Philosophy" data-fa="فلسفه">Philosophy</a></li>
+        <li><a href="#features" class="nav-link" data-en="Features" data-fa="امکانات">Features</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <div class="lang-toggle" id="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="fa">فا</button>
+      </div>
+      <a href="about.html" class="btn btn-secondary" style="padding:8px 16px;font-size:0.85rem" data-en="About Us" data-fa="درباره ما">About Us</a>
+      <button class="hamburger-menu" id="mobile-menu-btn">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========== MOBILE DRAWER ========== -->
+  <div class="mobile-nav-overlay" id="mobile-overlay"></div>
+  <div class="mobile-nav" id="mobile-drawer">
+    <button class="mobile-nav-close" id="mobile-close-btn">
+      <i data-lucide="x"></i>
+    </button>
+    <ul class="mobile-nav-links">
+      <li><a href="#hero" class="mobile-nav-link active" data-en="Home" data-fa="خانه">Home</a></li>
+      <li><a href="#philosophy" class="mobile-nav-link" data-en="Philosophy" data-fa="فلسفه">Philosophy</a></li>
+      <li><a href="#features" class="mobile-nav-link" data-en="Features" data-fa="امکانات">Features</a></li>
+      <li><a href="about.html" class="mobile-nav-link" data-en="About Us" data-fa="درباره ما">About Us</a></li>
+      <li><a href="privacy.html" class="mobile-nav-link" data-en="Privacy Policy" data-fa="حریم خصوصی">Privacy Policy</a></li>
+    </ul>
+    <div class="lang-toggle" style="margin-top:20px;">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="fa">فا</button>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="simulator-toast" id="global-toast">Action Completed!</div>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <section class="hero-section" id="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="section-tag" style="margin-bottom:15px" data-en="The Vault of Vision" data-fa="باکسِ تماشا">The Vault of Vision</span>
+        <h1 class="text-gradient-gold" data-en="In the Realm of Light, with the Glory of the Sun." data-fa="در قلمروِ نور، به شکوهِ خورشید.">In the Realm of Light, with the Glory of the Sun.</h1>
+        <p data-en="SheedBox is the ultimate premium streaming vault, bringing you high-quality movies, series, and live TV channels from around the world. We offer a seamless, immersive viewing experience tailored to your language and region." data-fa="شیدباکس، باکسِ تماشا در قلمروِ نور و با شکوهِ خورشید، برترین پلتفرم پخش آنلاین فیلم، سریال و شبکه‌های زنده است که تجربه‌ای بی‌نظیر و باکیفیت را متناسب با سلیقه شما فراهم می‌کند.">SheedBox is the ultimate premium streaming vault, bringing you high-quality movies, series, and live TV channels from around the world. We offer a seamless, immersive viewing experience tailored to your language and region.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-primary" onclick="scrollToSection('#features')">
+            <span data-en="Explore Features" data-fa="مشاهده امکانات">Explore Features</span> <i data-lucide="arrow-right"></i>
+          </button>
+          <a href="about.html" class="btn btn-secondary">
+            <span data-en="Our Story" data-fa="داستان ما">Our Story</span> <i data-lucide="info"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-logo-card">
+          <img src="logo-text.png" alt="SheedBox — The Vault of Vision" id="hero-logo-img" data-en-src="logo-text.png" data-fa-src="logo-text.png">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       PHILOSOPHY SECTION
+       ========================================================================== -->
+  <section id="philosophy">
+    <div class="section-header">
+      <span class="section-tag" data-en="Core Principles" data-fa="اصول بنیادین">Core Principles</span>
+      <h2 class="section-title text-gradient-gold" data-en="Unified Streaming Design" data-fa="طراحی یکپارچه پخش">Unified Streaming Design</h2>
+      <p class="section-desc" data-en="SheedBox operates on a robust framework, focusing on high-speed distribution, 100% legal content, and native localization." data-fa="شیدباکس بر پایه‌ی یک چارچوب مستحکم عمل می‌کند، با تمرکز بر توزیع پرسرعت، محتوای ۱۰۰٪ قانونی و بومی‌سازی کامل.">SheedBox operates on a robust framework, focusing on high-speed distribution, 100% legal content, and native localization.</p>
+    </div>
+
+    <!-- Philosophy Section Image -->
+    <div class="section-image">
+      <img src="philosophy.png" alt="SheedBox Core Principles — Legal, Global, Fast">
+    </div>
+
+    <div class="philosophy-grid">
+      <!-- Card 1 -->
+      <div class="philo-card glass-panel">
+        <div class="philo-icon"><i data-lucide="scale"></i></div>
+        <h3 class="philo-title" data-en="100% Legal Content" data-fa="محتوای ۱۰۰٪ قانونی">100% Legal Content</h3>
+        <p class="philo-desc" data-en="We stream only verified content catalogs — including public domain masterpieces, creative commons broadcasts, and official embeds — avoiding copyright issues entirely." data-fa="ما فقط کاتالوگ‌های محتوای تأیید شده را پخش می‌کنیم — شامل شاهکارهای دامنه عمومی، پخش‌های کریتیو کامنز و تعبیه‌های رسمی — و از مسائل کپی‌رایت به‌طور کامل اجتناب می‌کنیم.">We stream only verified content catalogs — including public domain masterpieces, creative commons broadcasts, and official embeds — avoiding copyright issues entirely.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="philo-card glass-panel">
+        <div class="philo-icon"><i data-lucide="globe"></i></div>
+        <h3 class="philo-title" data-en="Dual-Language Sync" data-fa="هماهنگی دو‌زبانه">Dual-Language Sync</h3>
+        <p class="philo-desc" data-en="The interface is fully localized, offering tailored English and Persian experiences, local TV schedules, and region-optimized metadata streams." data-fa="رابط کاربری به‌طور کامل بومی‌سازی شده و تجربه‌ای اختصاصی به زبان‌های فارسی و انگلیسی، برنامه‌های تلویزیونی محلی و جریان‌های فراداده بهینه‌شده برای منطقه ارائه می‌دهد.">The interface is fully localized, offering tailored English and Persian experiences, local TV schedules, and region-optimized metadata streams.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="philo-card glass-panel">
+        <div class="philo-icon"><i data-lucide="zap"></i></div>
+        <h3 class="philo-title" data-en="Low-Latency Delivery" data-fa="تحویل با تأخیر کم">Low-Latency Delivery</h3>
+        <p class="philo-desc" data-en="Streams and channels launch instantly with zero buffer overhead, delivering a seamless and responsive viewing experience across all devices." data-fa="پخش‌ها و کانال‌ها بلافاصله و بدون تأخیر بافر راه‌اندازی می‌شوند و تجربه تماشای یکپارچه و پاسخگو را در تمام دستگاه‌ها ارائه می‌دهند.">Streams and channels launch instantly with zero buffer overhead, delivering a seamless and responsive viewing experience across all devices.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FEATURES SECTION
+       ========================================================================== -->
+  <section id="features" style="background: radial-gradient(circle at center, rgba(16,26,36,0.25) 0%, transparent 80%);">
+    <div class="section-header">
+      <span class="section-tag" data-en="Application Suite" data-fa="مجموعه اپلیکیشن">Application Suite</span>
+      <h2 class="section-title text-gradient-gold" data-en="Designed for Immersion" data-fa="طراحی‌شده برای غرق شدن">Designed for Immersion</h2>
+      <p class="section-desc" data-en="Explore the core features implemented inside the SheedBox ecosystem." data-fa="امکانات اصلی پیاده‌سازی‌شده در اکوسیستم شیدباکس را کشف کنید.">Explore the core features implemented inside the SheedBox ecosystem.</p>
+    </div>
+
+    <!-- Features Section Image -->
+    <div class="section-image">
+      <img src="features.png" alt="SheedBox App Features — Movies, Live TV, Watch Party">
+    </div>
+
+    <div class="features-grid">
+      <!-- Feature 1 -->
+      <div class="feature-box glass-panel">
+        <div class="feature-box-icon"><i data-lucide="film"></i></div>
+        <div class="feature-box-text">
+          <h3 data-en="Movies &amp; Series" data-fa="فیلم‌ها و سریال‌ها">Movies &amp; Series</h3>
+          <p data-en="Immersive video player tailored for long-form streaming. Supports custom resolution scaling, localized subtitles, and resume-playback features." data-fa="پخش‌کننده ویدیویی همه‌جانبه برای پخش طولانی‌مدت. پشتیبانی از مقیاس‌بندی وضوح، زیرنویس بومی و ادامه پخش.">Immersive video player tailored for long-form streaming. Supports custom resolution scaling, localized subtitles, and resume-playback features.</p>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature-box glass-panel">
+        <div class="feature-box-icon"><i data-lucide="tv"></i></div>
+        <div class="feature-box-text">
+          <h3 data-en="Live TV &amp; Broadcasts" data-fa="تلویزیون زنده و پخش‌ها">Live TV &amp; Broadcasts</h3>
+          <p data-en="24/7 linear channel lists streaming local and international broadcast networks, complete with interactive TV schedules and instant channel switching." data-fa="لیست کانال‌های خطی ۲۴/۷ برای پخش شبکه‌های محلی و بین‌المللی، همراه با برنامه تلویزیونی تعاملی و تعویض فوری کانال.">24/7 linear channel lists streaming local and international broadcast networks, complete with interactive TV schedules and instant channel switching.</p>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature-box glass-panel">
+        <div class="feature-box-icon"><i data-lucide="users"></i></div>
+        <div class="feature-box-text">
+          <h3 data-en="Watch Party Lounge" data-fa="سالن تماشای گروهی">Watch Party Lounge</h3>
+          <p data-en="Create digital rooms to view streams alongside other members. Supports real-time room chats and invitations to connect with friends." data-fa="اتاق‌های دیجیتال ایجاد کنید تا همراه اعضای دیگر تماشا کنید. پشتیبانی از چت بلادرنگ و دعوت‌نامه برای ارتباط با دوستان.">Create digital rooms to view streams alongside other members. Supports real-time room chats and invitations to connect with friends.</p>
+        </div>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="feature-box glass-panel">
+        <div class="feature-box-icon"><i data-lucide="languages"></i></div>
+        <div class="feature-box-text">
+          <h3 data-en="Region &amp; Language Tailoring" data-fa="سفارشی‌سازی زبان و منطقه">Region &amp; Language Tailoring</h3>
+          <p data-en="Complete interface localization. Experience layout styling, local schedules, and profile controls fully integrated in both English and Persian languages." data-fa="بومی‌سازی کامل رابط کاربری. طراحی چیدمان، برنامه‌های محلی و کنترل‌های پروفایل به‌طور کامل به هر دو زبان فارسی و انگلیسی یکپارچه شده‌اند.">Complete interface localization. Experience layout styling, local schedules, and profile controls fully integrated in both English and Persian languages.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-logo-desc">
+        <div class="logo-wrapper">
+          <img src="logo.png" alt="SheedBox Logo" class="logo-img">
+          <span class="brand-name" data-en="SheedBox" data-fa="شیدباکس">SheedBox</span>
+        </div>
+        <p class="footer-desc" data-en="SheedBox is the ultimate premium streaming vault, bringing you high-quality movies, series, and live TV channels from around the world." data-fa="شیدباکس برترین پلتفرم پخش آنلاین است که فیلم، سریال و شبکه‌های زنده باکیفیت از سراسر جهان را به شما ارائه می‌دهد.">SheedBox is the ultimate premium streaming vault, bringing you high-quality movies, series, and live TV channels from around the world.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon"><i data-lucide="twitter" style="width:14px;"></i></a>
+          <a href="#" class="social-icon"><i data-lucide="instagram" style="width:14px;"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 data-en="Navigation" data-fa="ناوبری">Navigation</h4>
+        <ul class="footer-links">
+          <li class="footer-link-item"><a href="#hero" data-en="Home" data-fa="خانه">Home</a></li>
+          <li class="footer-link-item"><a href="#philosophy" data-en="Philosophy" data-fa="فلسفه">Philosophy</a></li>
+          <li class="footer-link-item"><a href="#features" data-en="Features" data-fa="امکانات">Features</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 data-en="Corporate" data-fa="سازمانی">Corporate</h4>
+        <ul class="footer-links">
+          <li class="footer-link-item"><a href="about.html" data-en="About Us" data-fa="درباره ما">About Us</a></li>
+          <li class="footer-link-item"><a href="privacy.html" data-en="Privacy Policy" data-fa="حریم خصوصی">Privacy Policy</a></li>
+          <li class="footer-link-item"><a href="mailto:info@sheedbox.com">info@sheedbox.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter-col">
+        <h4 data-en="Newsletter" data-fa="خبرنامه">Newsletter</h4>
+        <p class="footer-desc" style="margin-bottom:12px;font-size:0.78rem;" data-en="Receive announcements on new streaming features and regional catalog expansions." data-fa="اعلان‌های مربوط به امکانات جدید پخش و گسترش کاتالوگ منطقه‌ای را دریافت کنید.">Receive announcements on new streaming features and regional catalog expansions.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); triggerToast(currentLang === 'fa' ? 'با موفقیت عضو شدید!' : 'Subscribed successfully!'); this.reset();">
+          <input type="email" class="newsletter-input" data-en-placeholder="Your email address" data-fa-placeholder="آدرس ایمیل شما" placeholder="Your email address" required>
+          <button class="newsletter-btn" type="submit">
+            <span data-en="Subscribe" data-fa="عضویت">Subscribe</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span data-en="© 2026 SheedBox. All rights reserved." data-fa="© ۲۰۲۶ شیدباکس. تمامی حقوق محفوظ است.">© 2026 SheedBox. All rights reserved.</span>
+      <span data-en="The Vault of Vision, in the Realm of Light" data-fa="باکسِ تماشا، در قلمروِ نور">The Vault of Vision, in the Realm of Light</span>
+    </div>
+  </footer>
+
+  <!-- Libraries -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Register GSAP ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* ==========================================================================
+       1. Language Switching (EN / FA)
+       ========================================================================== */
+    let currentLang = localStorage.getItem('sheedbox-lang') || 'en';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('sheedbox-lang', lang);
+
+      const html = document.documentElement;
+      html.setAttribute('lang', lang);
+      html.setAttribute('dir', lang === 'fa' ? 'rtl' : 'ltr');
+
+      // Update all [data-en] / [data-fa] text nodes
+      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+
+      // Update placeholders
+      document.querySelectorAll('[data-' + lang + '-placeholder]').forEach(el => {
+        el.placeholder = el.getAttribute('data-' + lang + '-placeholder');
+      });
+
+      // Update hero logo image
+      const heroImg = document.getElementById('hero-logo-img');
+      if (heroImg) {
+        heroImg.src = heroImg.getAttribute('data-' + lang + '-src') || heroImg.src;
+      }
+
+      // Toggle active class on lang buttons
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+
+      // Re-initialize icons that got destroyed
+      lucide.createIcons();
+    }
+
+    // Bind all lang toggle buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
+    });
+
+    // Apply initial language on load
+    setLanguage(currentLang);
+
+    /* ==========================================================================
+       2. Mobile Navigation Menu
+       ========================================================================== */
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('mobile-close-btn');
+    const drawer = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('mobile-overlay');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    menuBtn.addEventListener('click', () => {
+      drawer.classList.add('open');
+      overlay.classList.add('open');
+    });
+
+    const closeMenu = () => {
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+    };
+
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+    mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+    /* ==========================================================================
+       3. Scroll & Active Header Links
+       ========================================================================== */
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+          link.classList.add('active');
+        }
+      });
+
+      mobileLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    function scrollToSection(selector) {
+      document.querySelector(selector).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* ==========================================================================
+       4. GSAP Entry & ScrollTrigger Animations
+       ========================================================================== */
+    gsap.from('.hero-text h1', { duration: 1, y: 40, opacity: 0, ease: 'power4.out', delay: 0.2 });
+    gsap.from('.hero-text p', { duration: 1, y: 20, opacity: 0, ease: 'power4.out', delay: 0.4 });
+    gsap.from('.hero-ctas', { duration: 1, y: 20, opacity: 0, ease: 'power4.out', delay: 0.5 });
+    gsap.from('.hero-logo-card', { duration: 1, scale: 0.95, rotateY: -10, opacity: 0, ease: 'power3.out', delay: 0.4 });
+
+    document.querySelectorAll('.section-header').forEach(header => {
+      gsap.from(header, {
+        scrollTrigger: { trigger: header, start: 'top 85%' },
+        duration: 0.6, y: 30, opacity: 0, ease: 'power2.out'
+      });
+    });
+
+    document.querySelectorAll('.section-image').forEach(img => {
+      gsap.from(img, {
+        scrollTrigger: { trigger: img, start: 'top 85%' },
+        duration: 0.8, y: 40, opacity: 0, ease: 'power2.out'
+      });
+    });
+
+    gsap.from('.philo-card', {
+      scrollTrigger: { trigger: '.philosophy-grid', start: 'top 85%' },
+      duration: 0.6, y: 30, opacity: 0, stagger: 0.1, ease: 'power2.out'
+    });
+
+    gsap.from('.feature-box', {
+      scrollTrigger: { trigger: '.features-grid', start: 'top 85%' },
+      duration: 0.6, y: 30, opacity: 0, stagger: 0.1, ease: 'power2.out'
+    });
+
+    /* ==========================================================================
+       5. Interactive Particle Net Background (Gold Theme)
+       ========================================================================== */
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h;
+    let particles = [];
+    const maxParticles = 40;
+    const connectionRadius = 120;
+    let mouse = { x: null, y: null, active: false };
+
+    function resizeCanvas() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        this.vx = (Math.random() - 0.5) * 0.25;
+        this.vy = (Math.random() - 0.5) * 0.25;
+        this.radius = Math.random() * 1.5 + 1;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > w) this.vx *= -1;
+        if (this.y < 0 || this.y > h) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(212, 175, 55, 0.2)';
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      for (let i = 0; i < maxParticles; i++) particles.push(new Particle());
+    }
+    initParticles();
+
+    window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true; });
+    window.addEventListener('mouseleave', () => { mouse.active = false; });
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, w, h);
+      particles.forEach(p => { p.update(); p.draw(); });
+
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < connectionRadius) {
+            const alpha = (1 - dist / connectionRadius) * 0.08;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(138, 109, 59, ${alpha})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+        if (mouse.active) {
+          const dx = particles[i].x - mouse.x;
+          const dy = particles[i].y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < connectionRadius + 20) {
+            const alpha = (1 - dist / (connectionRadius + 20)) * 0.12;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(212, 175, 55, ${alpha})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    /* ==========================================================================
+       6. Global Toast
+       ========================================================================== */
+    const toast = document.getElementById('global-toast');
+    function triggerToast(message) {
+      toast.innerText = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+  </script>
+</body>
+</html>
