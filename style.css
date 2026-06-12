@@ -229,6 +229,7 @@ html[dir="rtl"] .mobile-nav-close { right: auto; left: 20px; }
 @media (max-width: 768px) {
   header { padding: 8px 14px; width: 95%; }
   .nav-links { display: none; }
+  .nav-actions .lang-toggle, .nav-actions .btn-secondary { display: none; }
   .hamburger-menu { display: block; }
   .hero-text h1 { font-size: 1.9rem; }
   .section-title { font-size: 1.7rem; }
