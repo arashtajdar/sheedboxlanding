@@ -57,7 +57,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 700; let
 .text-gradient-gold { background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 50%, var(--color-primary-dark) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .text-muted { color: var(--text-secondary); }
 
-.glass-panel { background: var(--bg-panel); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: var(--border-glass); box-shadow: var(--shadow-glass); border-radius: 16px; transition: var(--transition-smooth); }
+.glass-panel { background: var(--bg-panel); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: var(--border-glass); box-shadow: var(--shadow-glass); border-radius: 16px; transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; }
 .glass-panel:hover { border: var(--border-glass-bright); }
 
 /* Background Glow */
@@ -117,9 +117,9 @@ section { position: relative; padding: 50px 5%; max-width: 1200px; margin: 0 aut
 .hero-text p { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 28px; max-width: 560px; line-height: 1.65; }
 .hero-ctas { display: flex; gap: 12px; align-items: center; }
 .hero-visual { display: flex; justify-content: center; align-items: center; }
-.hero-logo-card { max-width: 380px; width: 100%; padding: 40px; border-radius: 24px; border: var(--border-glass-bright); box-shadow: 0 20px 50px rgba(0,0,0,0.7), var(--shadow-glow); background: radial-gradient(circle at center, rgba(16,26,36,0.8), var(--bg-deep)); display: flex; align-items: center; justify-content: center; transition: var(--transition-smooth); }
-.hero-logo-card:hover { box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 40px rgba(212,175,55,0.15); border-color: var(--color-primary); }
-.hero-logo-card img { width: 100%; }
+.hero-logo-card { max-width: 380px; width: 100%; padding: 40px; border-radius: 24px; border: var(--border-glass-bright); box-shadow: 0 20px 50px rgba(0,0,0,0.7), var(--shadow-glow); background: radial-gradient(circle at bottom, rgba(212,175,55,0.25) 0%, rgba(16,26,36,0.8) 60%, var(--bg-deep) 100%); display: flex; align-items: center; justify-content: center; transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; }
+.hero-logo-card:hover { box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 40px rgba(212,175,55,0.25); border-color: var(--color-primary); }
+.hero-logo-card img { width: 100%; filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.25)); }
 
 /* ==========================================================================
    8. Philosophy & Features cards
@@ -130,7 +130,8 @@ section { position: relative; padding: 50px 5%; max-width: 1200px; margin: 0 aut
 .section-desc { font-size: 1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.6; }
 
 .philosophy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.philo-card { padding: 28px; border-radius: 16px; background: rgba(16,26,36,0.45); border: var(--border-glass); position: relative; overflow: hidden; transition: var(--transition-smooth); }
+.philo-card { padding: 28px; border-radius: 16px; background: rgba(16,26,36,0.45); border: var(--border-glass); position: relative; overflow: hidden; transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; }
+.philo-card.ready { transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; }
 .philo-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, rgba(212,175,55,0.25), transparent); }
 .philo-icon { width: 45px; height: 45px; border-radius: 8px; background: rgba(212,175,55,0.06); border: 1px solid rgba(212,175,55,0.15); color: var(--color-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; font-size: 1.2rem; }
 .philo-title { font-size: 1.2rem; margin-bottom: 8px; color: #fff; }
@@ -138,7 +139,8 @@ section { position: relative; padding: 50px 5%; max-width: 1200px; margin: 0 aut
 .philo-card:hover { transform: translateY(-3px); background: rgba(22,36,50,0.55); border-color: rgba(212,175,55,0.25); box-shadow: var(--shadow-glow); }
 
 .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-.feature-box { padding: 25px; border-radius: 16px; background: rgba(16,26,36,0.45); border: var(--border-glass); display: flex; gap: 18px; transition: var(--transition-smooth); }
+.feature-box { padding: 25px; border-radius: 16px; background: rgba(16,26,36,0.45); border: var(--border-glass); display: flex; gap: 18px; transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; }
+.feature-box.ready { transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; }
 .feature-box:hover { border-color: var(--color-primary); background: rgba(16,26,36,0.6); transform: translateY(-2px); }
 .feature-box-icon { width: 42px; height: 42px; border-radius: 8px; background: rgba(212,175,55,0.06); border: 1px solid rgba(212,175,55,0.15); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
 .feature-box-text h3 { font-size: 1.1rem; margin-bottom: 6px; color: #fff; }
