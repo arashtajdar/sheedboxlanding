@@ -40,6 +40,7 @@
         <button class="lang-btn active" data-lang="en">EN</button>
         <button class="lang-btn" data-lang="fa">فا</button>
       </div>
+      <a href="https://app.sheedbox.com" class="btn btn-primary" style="padding:8px 16px;font-size:0.85rem" data-en="Web App" data-fa="وب اپلیکیشن">Web App</a>
       <a href="about.html" class="btn btn-secondary" style="padding:8px 16px;font-size:0.85rem" data-en="About Us"
         data-fa="درباره ما">About Us</a>
       <button class="hamburger-menu" id="mobile-menu-btn">
@@ -61,6 +62,7 @@
       <li><a href="about.html" class="mobile-nav-link" data-en="About Us" data-fa="درباره ما">About Us</a></li>
       <li><a href="privacy.html" class="mobile-nav-link" data-en="Privacy Policy" data-fa="حریم خصوصی">Privacy
           Policy</a></li>
+      <li><a href="https://app.sheedbox.com" class="mobile-nav-link" data-en="Web App" data-fa="وب اپلیکیشن">Web App</a></li>
     </ul>
     <div class="lang-toggle" style="margin-top:20px;">
       <button class="lang-btn active" data-lang="en">EN</button>
@@ -234,6 +236,24 @@
   </section>
 
   <!-- ==========================================================================
+       DOWNLOAD SECTION
+       ========================================================================== -->
+  <section id="download">
+    <div class="section-header">
+      <span class="section-tag" data-en="Get the App" data-fa="دریافت اپلیکیشن">Get the App</span>
+      <h2 class="section-title text-gradient-gold" data-en="Download SheedBox" data-fa="دانلود شیدباکس">
+        Download SheedBox</h2>
+      <p class="section-desc" data-en="Available across all major platforms. Choose your operating system below."
+        data-fa="در تمامی پلتفرم‌های اصلی موجود است. سیستم‌عامل خود را انتخاب کنید.">
+        Available across all major platforms. Choose your operating system below.</p>
+    </div>
+
+    <div class="download-grid" id="downloads-container">
+      <!-- Injected by JS -->
+    </div>
+  </section>
+
+  <!-- ==========================================================================
        FOOTER
        ========================================================================== -->
   <footer>
@@ -322,6 +342,92 @@
 
     // Register GSAP ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
+
+    /* ==========================================================================
+       0. Downloads Fetching
+       ========================================================================== */
+    async function loadDownloads() {
+      try {
+        const res = await fetch('downloads.json');
+        const data = await res.json();
+        const container = document.getElementById('downloads-container');
+        if(!container) return;
+
+        const platforms = [
+          {
+            id: 'windows',
+            icon: 'monitor',
+            name: { en: 'Windows', fa: 'ویندوز' },
+            links: [
+              { key: 'exe', label: { en: 'Download .exe', fa: 'دانلود فایل .exe' }, url: data.windows?.exe },
+              { key: 'store', label: { en: 'Windows Store', fa: 'ویندوز استور' }, url: data.windows?.store }
+            ]
+          },
+          {
+            id: 'macos',
+            icon: 'laptop',
+            name: { en: 'macOS', fa: 'مک‌اواس' },
+            links: [
+              { key: 'dmg', label: { en: 'Download .dmg', fa: 'دانلود فایل .dmg' }, url: data.macos?.dmg },
+              { key: 'store', label: { en: 'Mac App Store', fa: 'مک اپ استور' }, url: data.macos?.store }
+            ]
+          },
+          {
+            id: 'android',
+            icon: 'smartphone',
+            name: { en: 'Android', fa: 'اندروید' },
+            links: [
+              { key: 'apk', label: { en: 'Download .apk', fa: 'دانلود فایل .apk' }, url: data.android?.apk },
+              { key: 'play', label: { en: 'Google Play', fa: 'گوگل پلی' }, url: data.android?.play }
+            ]
+          },
+          {
+            id: 'ios',
+            icon: 'smartphone',
+            name: { en: 'iOS', fa: 'آی‌اواس' },
+            links: [
+              { key: 'url', label: { en: 'App Store', fa: 'اپ استور' }, url: data.ios?.url }
+            ]
+          }
+        ];
+
+        platforms.forEach(p => {
+          const card = document.createElement('div');
+          card.className = 'download-card glass-panel';
+          
+          let linksHtml = '';
+          p.links.forEach(l => {
+            const isEmpty = !l.url;
+            const linkTag = isEmpty ? 'span' : 'a';
+            const href = isEmpty ? '' : `href="${l.url}" target="_blank"`;
+            const cssClass = isEmpty ? 'download-link disabled' : 'download-link';
+            const comingSoonHtml = isEmpty ? `<span class="coming-soon" data-en="(Coming Soon)" data-fa="(به زودی)">(Coming Soon)</span>` : '';
+            
+            linksHtml += `<${linkTag} ${href} class="${cssClass}">
+              <span data-en="${l.label.en}" data-fa="${l.label.fa}">${l.label.en}</span>
+              ${comingSoonHtml}
+            </${linkTag}>`;
+          });
+
+          card.innerHTML = `
+            <div class="download-icon"><i data-lucide="${p.icon}"></i></div>
+            <h3 data-en="${p.name.en}" data-fa="${p.name.fa}">${p.name.en}</h3>
+            <div class="download-links">
+              ${linksHtml}
+            </div>
+          `;
+          container.appendChild(card);
+        });
+
+        lucide.createIcons();
+        if(typeof setLanguage === 'function') {
+            setLanguage(currentLang);
+        }
+      } catch (err) {
+        console.error('Failed to load downloads', err);
+      }
+    }
+    loadDownloads();
 
     /* ==========================================================================
        1. Language Switching (EN / FA)

@@ -1,0 +1,17 @@
+{
+  "windows": {
+    "exe": "",
+    "store": ""
+  },
+  "ios": {
+    "url": ""
+  },
+  "android": {
+    "play": "",
+    "apk": ""
+  },
+  "macos": {
+    "store": "",
+    "dmg": ""
+  }
+}
