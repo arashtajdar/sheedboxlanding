@@ -85,7 +85,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading); font-weight: 700; let
 /* ==========================================================================
    5. Header
    ========================================================================== */
-header { position: fixed; top: 15px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1200px; z-index: 100; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; border-radius: 16px; background: rgba(16,26,36,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: var(--border-glass); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+header { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; padding: 14px 5%; display: flex; align-items: center; justify-content: space-between; background: rgba(10, 17, 24, 0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: var(--border-glass); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
 .logo-wrapper { display: flex; align-items: center; gap: 10px; }
 .logo-img { height: 32px; object-fit: contain; }
 .brand-name { font-family: var(--font-heading); font-weight: 850; font-size: 1.3rem; letter-spacing: -0.03em; background: linear-gradient(to right, #fff, var(--color-primary-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -242,7 +242,7 @@ html[dir="rtl"] .mobile-nav-close { right: auto; left: 20px; }
 }
 
 @media (max-width: 768px) {
-  header { padding: 8px 14px; width: 95%; }
+  header { padding: 12px 16px; }
   .nav-links { display: none; }
   .nav-actions .lang-toggle, .nav-actions .btn-secondary { display: none; }
   .hamburger-menu { display: block; }
