@@ -154,7 +154,8 @@ footer { background: var(--bg-deep); border-top: var(--border-glass); padding: 5
 .footer-logo-desc { display: flex; flex-direction: column; gap: 12px; }
 .footer-desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.55; }
 .footer-socials { display: flex; gap: 10px; }
-.social-icon { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.02); border: var(--border-glass); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); transition: var(--transition-fast); }
+.social-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); border: var(--border-glass); display: flex; align-items: center; justify-content: center; color: var(--text-primary); transition: var(--transition-fast); }
+.social-icon svg { width: 18px !important; height: 18px !important; stroke: #FFFFFF !important; stroke-width: 2 !important; fill: none !important; }
 .social-icon:hover { background: var(--color-primary); color: var(--bg-deep); border-color: var(--color-primary); }
 .footer-links-col h4 { font-size: 0.88rem; margin-bottom: 15px; color: #fff; letter-spacing: 0.05em; text-transform: uppercase; }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
